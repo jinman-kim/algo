@@ -1,28 +1,41 @@
-def solution(info,query):
-    new_query = []
-    for q in range(len(query)):
-        new_query.append(query[q].replace('and', '').split())
-        if new_query[q][0] == '-':
-            new_query[q][0] = 'python,java,cpp'
-        if new_query[q][1] == '-':
-            new_query[q][1] = 'backend,frontend'
-        if new_query[q][2] == '-':
-            new_query[q][2] = 'senior,junior'
-        if new_query[q][3] == '-':
-            new_query[q][3] = 'pizza,chicken'
-    new_info = []
+def solution(info, query):
+    data = dict()
+    for a in ['cpp', 'java', 'python', '-']:
+        for b in ['backend', 'frontend', '-']:
+            for c in ['junior', 'senior', '-']:
+                for d in ['chicken', 'pizza', '-']:
+                    data.setdefault((a, b, c, d), list())
+    print(data)
     for i in info:
-        new_info.append(i.split())
-    answer = [0] * (len(query))
-    for i in range(len(new_query)):
-        for j in range(len(new_info)):
-            for k in range(5):
-                if int(new_info[j][4]) < int(new_query[i][4]):
-                    break
-                elif new_info[j][k] not in new_query[i][k] and k!=4:
-                    break
-                elif k == 4:
-                    answer[i] += 1
+        i = i.split()
+        for a in [i[0], '-']:
+            for b in [i[1], '-']:
+                for c in [i[2], '-']:
+                    for d in [i[3], '-']:
+                        data[(a, b, c, d)].append(int(i[4]))
+    for k in data:
+        data[k].sort()
+    print(data)
+        # print(k, data[k])
+
+    answer = list()
+    for q in query:
+        q = q.split()
+
+        pool = data[(q[0], q[2], q[4], q[6])]
+        find = int(q[7])
+        l = 0
+        r = len(pool)
+        mid = 0
+        while l < r:
+            mid = (r+l)//2
+            if pool[mid] >= find:
+                r = mid
+            else:
+                l = mid+1
+            # print(l, r, mid, answer)
+        # answer.append((pool, find, mid))
+        answer.append(len(pool)-l)
 
     return answer
 info = ["java backend junior pizza 150","python frontend senior chicken 210",
