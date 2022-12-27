@@ -1,16 +1,8 @@
+from functools import reduce
 def solution(data, col, row_begin, row_end):
-    answer = []
-    result = 0
-    tmp=0
-    data.sort(key=lambda x: (x[col - 1], -x[0]))
-    for i in range(row_begin, row_end + 1, 1):
-        for j in data[i-1]:
-            tmp+=j%i
-        answer.append(tmp)
-        tmp=0
-    for i in answer:
-        result ^= i
-    return result
+    data.sort(key=lambda x: (x[col-1], -x[0]))
+    return reduce(lambda x,y : x^y,
+                  [sum(map(lambda x:x%(i+1),data[i])) for i in range(row_begin-1,row_end)])
 
 
 data = [[2, 2, 6], [1, 5, 10], [4, 2, 9], [3, 8, 3]]
