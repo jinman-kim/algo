@@ -5,11 +5,11 @@ def solution(k,dungeons):
     for i in range(len(route)):
         tmp=k
         for j in route[i]:
-            if j[0]>tmp:
+            if j[0] > tmp:
                 break
             else:
-                tmp-=j[1]
-                num[i]+=1
+                tmp -= j[1]
+                num[i] += 1
     answer = max(num)
     return answer
 k=80
