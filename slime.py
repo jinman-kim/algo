@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 def solution(graph):
     import time
     start = time.time()
@@ -7,6 +9,7 @@ def solution(graph):
     graph.insert(0, [0 for _ in range(len(graph)+2)])
     graph.insert(len(graph),[0 for _ in range(len(graph)+1)])
     while True:
+        tmp = deepcopy(graph)
         for i in range(len(graph)-1):
             for j in range(len(graph)-1):
                 if graph[i][j] == 1:
@@ -16,8 +19,10 @@ def solution(graph):
                         if graph[i+1][j] == 0:
                             graph[i][j] = 0
                             graph[i+1][j] = 1
-        if time.time() - start > 0.2:
+        if tmp == graph:
             break
+        # if time.time() - start > 0.2:
+        #     break
     answer = []
     for i in range(1,len(graph)-1):
         answer.append(graph[i][1:len(graph)-1])
@@ -33,4 +38,5 @@ graph = [
     [1,2,1,2,1],
     [3,2,0,0,0]]
 # 아래는 2가 있으면 안 되고, 3은 상하좌우에 다 있어도 안되고
+
 print(solution(graph))
