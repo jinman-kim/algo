@@ -1,10 +1,12 @@
 def solution(N,stages):
+    from collections import Counter
+    stage_count = Counter(stages)
     answer = {}
     stages.sort()
     tmp = len(stages)
     for i in range(N):
         if tmp:
-            answer[i+1] = (stages.count(i+1)/tmp)
+            answer[i+1] = (stage_count[i+1]/tmp)
             tmp -= stages.count(i+1)
         else:
             answer[i+1] = 0
