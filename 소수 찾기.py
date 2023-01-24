@@ -22,6 +22,5 @@ def solution(numbers):
             answer+=1
     return answer
 
-
 numbers = '17'
 print(solution(numbers))
