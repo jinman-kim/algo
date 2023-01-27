@@ -5,7 +5,7 @@ def solution(citations):
         return 0
     else:
         for i in range(0, len(citations)):
-            if citations[i] <= i:
+            if i >= citations[i]:
                 break
             else:
                 tmp += 1
