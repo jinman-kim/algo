@@ -23,9 +23,7 @@ for _ in range(n):
         if i > c:
             cnt+=1
     tmp.append(cnt)
-    for i in tmp:
-        print(i,end=' ')
-    print()
+    print(*tmp)
 cnt = 1
 rank = []
 for i in olympic:
@@ -42,5 +40,4 @@ for i in olympic:
     if i > olympic[2]:
         cnt+=1
 rank.append(cnt)
-for i in rank:
-    print(i,end=' ')
+print(*rank)
