@@ -15,7 +15,6 @@ def solution(expression):
     for orders in permutations(['*','+','-'],3):
         for order in orders:
             for op in range(len(oper)):
-                if order == oper[op]:
 
     # 순서가 총 6개
     # 연산자 n개, 수 n+1개
