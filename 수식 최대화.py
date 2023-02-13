@@ -12,9 +12,9 @@ def solution(expression):
     print(oper)
     print(num)
     from itertools import permutations
-    for orders in permutations(['*','+','-'],3):
-        for order in orders:
-            for op in range(len(oper)):
+    # for orders in permutations(['*','+','-'],3):
+    #     for order in orders:
+    #         for op in range(len(oper)):
 
     # 순서가 총 6개
     # 연산자 n개, 수 n+1개
