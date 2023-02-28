@@ -14,8 +14,9 @@ def solution(keymap, targets):
                 cnt += alpha[i]
             answer.append(cnt)
         except Exception as e:
+            answer.append(-1)
             pass
-    return answer if answer else [-1]
+    return answer
 
-keymap, targets = ["AA"],["B"]
+keymap, targets = ["AAAA"],["BBBBB",'BBBB']
 print(solution(keymap,targets))
