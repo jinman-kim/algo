@@ -3,8 +3,6 @@ from itertools import permutations
 
 def arith(num_list,oper):
     tmp = num_list[0]
-    maximum = -1e9
-    minimum = 1e9
     for i in range(len(oper)):
         if oper[i] == 0:
             tmp += num_list[i+1]
@@ -13,15 +11,8 @@ def arith(num_list,oper):
         if oper[i] == 2:
             tmp *= num_list[i+1]
         if oper[i] == 3:
-            tmp = abs(abs(tmp) // num_list[i + 1])
-    if tmp > maximum:
-        maximum = tmp
-        return maximum
-    if tmp < minimum:
-        minimum = tmp
-        return minimum
-    else:
-        return tmp
+            tmp = int(tmp / num_list[i+1])
+    return tmp
 
 
 n = int(input())
