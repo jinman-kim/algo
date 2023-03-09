@@ -1,6 +1,6 @@
 from itertools import permutations
 
-
+##  caution : 나누기 연산시에  음수 // 양수를 하면 -1//3=0 이아닌 -1이 나옴 주의해야함
 def arith(num_list,oper):
     tmp = num_list[0]
     for i in range(len(oper)):
